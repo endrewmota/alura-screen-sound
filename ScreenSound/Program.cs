@@ -59,6 +59,7 @@ void ExibirOpcoesDoMenu()
 void RegistrarBanda()
 {
     Console.Clear();
+    ExibirTituloDaOpcao("Registro das bandas");
     Console.Write("Digite o nome da banda que deseja registrar: ");
     string nomeDaBanda = Console.ReadLine()!;
     bandasRegistradas.Add(nomeDaBanda, new List<int>());
@@ -71,6 +72,7 @@ void RegistrarBanda()
 void MostrarBandasRegistradas()
 {
     Console.Clear();
+    ExibirTituloDaOpcao("Exibindo todas as bandas registradas na nossa aplicação");
     foreach (string banda in bandasRegistradas.Keys)
     {
         Console.WriteLine($"Banda: {banda}");
@@ -85,6 +87,7 @@ void MostrarBandasRegistradas()
 void AvaliarUmaBanda()
 {
     Console.Clear();
+    ExibirTituloDaOpcao("Avaliar banda");
     Console.Write("Digite o nome da banda que deseja avaliar: ");
     string nomeDaBanda = Console.ReadLine()!;
     if (bandasRegistradas.ContainsKey(nomeDaBanda))
@@ -100,7 +103,7 @@ void AvaliarUmaBanda()
     else
     {
         Console.WriteLine($"\nAbanda {nomeDaBanda} não foi encontrada!");
-        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+        Console.WriteLine("\nDigite uma tecla para voltar ao menu principal");
         Console.ReadKey();
         Console.Clear();
         ExibirOpcoesDoMenu();
@@ -110,13 +113,14 @@ void AvaliarUmaBanda()
 void ExibirMedia()
 {
     Console.Clear();
-    Console.Write("Digite o nome da banda que deseja exibir a média: ");
+    ExibirTituloDaOpcao("Exibir média da banda");
+    Console.Write("\nDigite o nome da banda que deseja exibir a média: ");
     string nomeDaBanda = Console.ReadLine()!;
     if (bandasRegistradas.ContainsKey(nomeDaBanda))
     {
         List<int> notasDaBanda = bandasRegistradas[nomeDaBanda];
         Console.WriteLine($"\nA média da banda {nomeDaBanda} é {notasDaBanda.Average()}.");
-        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+        Console.WriteLine("\nDigite uma tecla para voltar ao menu principal");
         Console.ReadKey();
         Console.Clear();
         ExibirOpcoesDoMenu();
@@ -124,7 +128,7 @@ void ExibirMedia()
     else
     {
         Console.WriteLine($"\nA banda {nomeDaBanda} não foi encontrada!");
-        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+        Console.WriteLine("\nDigite uma tecla para voltar ao menu principal");
         Console.ReadKey();
         Console.Clear();
         ExibirOpcoesDoMenu();
@@ -135,6 +139,15 @@ void Sair()
 {
     Console.WriteLine("\nTchau Tchau :)");
    
+}
+
+void ExibirTituloDaOpcao(string titulo)
+{
+    int quantidadeDeLetras = titulo.Length;
+    string asterisco = string.Empty.PadLeft(quantidadeDeLetras, '*');
+    Console.WriteLine(asterisco);
+    Console.WriteLine(titulo);
+    Console.WriteLine(asterisco);
 }
 
 ExibirOpcoesDoMenu();
