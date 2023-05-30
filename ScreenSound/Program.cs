@@ -62,11 +62,20 @@ void RegistrarBanda()
     ExibirTituloDaOpcao("Registro das bandas");
     Console.Write("Digite o nome da banda que deseja registrar: ");
     string nomeDaBanda = Console.ReadLine()!;
-    bandasRegistradas.Add(nomeDaBanda, new List<int>());
-    Console.WriteLine($"A Banda {nomeDaBanda} foi registrada com sucesso!");
-    Thread.Sleep(4000);
-    Console.Clear();
-    ExibirOpcoesDoMenu();
+    if (nomeDaBanda.Length != 0)
+    {
+        bandasRegistradas.Add(nomeDaBanda, new List<int>());
+        Console.WriteLine($"A Banda {nomeDaBanda} foi registrada com sucesso!");
+        Thread.Sleep(4000);
+        Console.Clear();
+        ExibirOpcoesDoMenu();
+    } else
+    {
+        Console.WriteLine("\nO nome da banda não pode estar em branco.\n\nDigite um nome válido para a banda!");
+        Thread.Sleep(4000);
+        RegistrarBanda();
+    }
+    
 }
 
 void MostrarBandasRegistradas()
@@ -151,3 +160,10 @@ void ExibirTituloDaOpcao(string titulo)
 }
 
 ExibirOpcoesDoMenu();
+
+
+
+
+//TODO
+
+//Corigir bugs
