@@ -1,6 +1,10 @@
 ﻿//Screen Sound
 string mensagemDeBoasVindas = "Boas Vindas ao Screen Sound";
 
+Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
+bandasRegistradas.Add("Linkin Park", new List<int> { 10, 8, 6});
+bandasRegistradas.Add("The Beatles", new List<int>());
+
 void ExibirLogo()
 {
     Console.WriteLine(@"
@@ -55,7 +59,8 @@ void RegistrarBanda()
     Console.Clear();
     Console.Write("Digite o nome da banda que deseja registrar: ");
     string nomeDaBanda = Console.ReadLine()!;
-    Console.WriteLine($"Banda {nomeDaBanda} registrada com sucesso!");
+    bandasRegistradas.Add(nomeDaBanda, new List<int>());
+    Console.WriteLine($"A Banda {nomeDaBanda} foi registrada com sucesso!");
     Thread.Sleep(4000);
     Console.Clear();
     ExibirOpcoesDoMenu();
