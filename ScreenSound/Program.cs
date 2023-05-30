@@ -60,7 +60,7 @@ void RegistrarBanda()
 {
     Console.Clear();
     ExibirTituloDaOpcao("Registro das bandas");
-    Console.Write("Digite o nome da banda que deseja registrar: ");
+    Console.Write("\nDigite o nome da banda que deseja registrar: ");
     string nomeDaBanda = Console.ReadLine()!;
     if (nomeDaBanda.Length != 0)
     {
@@ -97,11 +97,11 @@ void AvaliarUmaBanda()
 {
     Console.Clear();
     ExibirTituloDaOpcao("Avaliar banda");
-    Console.Write("Digite o nome da banda que deseja avaliar: ");
+    Console.Write("\nDigite o nome da banda que deseja avaliar: ");
     string nomeDaBanda = Console.ReadLine()!;
     if (bandasRegistradas.ContainsKey(nomeDaBanda))
     {
-        Console.Write($"Qual a nota que a banda {nomeDaBanda} merece: ");
+        Console.Write($"\nQual a nota que a banda {nomeDaBanda} merece: ");
         int nota = int.Parse(Console.ReadLine()!);
         bandasRegistradas[nomeDaBanda].Add(nota);
         Console.WriteLine($"\nA nota {nota} foi registrada com sucesso para a banda {nomeDaBanda}");
@@ -125,14 +125,25 @@ void ExibirMedia()
     ExibirTituloDaOpcao("Exibir média da banda");
     Console.Write("\nDigite o nome da banda que deseja exibir a média: ");
     string nomeDaBanda = Console.ReadLine()!;
-    if (bandasRegistradas.ContainsKey(nomeDaBanda))
+    if (bandasRegistradas.ContainsKey(nomeDaBanda) )
     {
         List<int> notasDaBanda = bandasRegistradas[nomeDaBanda];
-        Console.WriteLine($"\nA média da banda {nomeDaBanda} é {notasDaBanda.Average()}.");
-        Console.WriteLine("\nDigite uma tecla para voltar ao menu principal");
-        Console.ReadKey();
-        Console.Clear();
-        ExibirOpcoesDoMenu();
+        if (notasDaBanda.Count < 0)
+        {
+            Console.WriteLine($"\nA banda {nomeDaBanda} não tem nota para obter uma média.");
+            Console.WriteLine("\nDigite uma tecla para voltar ao menu principal");
+            Console.ReadKey();
+            Console.Clear();
+            ExibirOpcoesDoMenu();
+        }
+        else
+        {
+            Console.WriteLine($"\nA média da banda {nomeDaBanda} é {notasDaBanda.Average()}.");
+            Console.WriteLine("\nDigite uma tecla para voltar ao menu principal");
+            Console.ReadKey();
+            Console.Clear();
+            ExibirOpcoesDoMenu();
+        }
     }
     else
     {
