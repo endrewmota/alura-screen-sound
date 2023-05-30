@@ -1,4 +1,6 @@
 ﻿//Screen Sound
+using System.Runtime.CompilerServices;
+
 string mensagemDeBoasVindas = "Boas Vindas ao Screen Sound";
 
 Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
@@ -45,8 +47,11 @@ void ExibirOpcoesDoMenu()
         case 4: ExibirMedia();
             break;
 
-        case -1:
-            Console.WriteLine("\nVocê escolheu a opção -1");
+        case -1: Sair();
+            
+            break;
+
+        default: Console.WriteLine("Opção inválida");
             break;
     }
 }
@@ -124,6 +129,12 @@ void ExibirMedia()
         Console.Clear();
         ExibirOpcoesDoMenu();
     }
+}
+
+void Sair()
+{
+    Console.WriteLine("\nTchau Tchau :)");
+   
 }
 
 ExibirOpcoesDoMenu();
