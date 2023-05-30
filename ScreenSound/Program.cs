@@ -36,8 +36,7 @@ void ExibirOpcoesDoMenu()
         case 1: RegistrarBanda();
             break;
 
-        case 2:
-            Console.WriteLine("\nVocê escolheu a opção 2");
+        case 2: MostrarBandasRegistradas();
             break;
 
         case 3:
@@ -61,6 +60,19 @@ void RegistrarBanda()
     string nomeDaBanda = Console.ReadLine()!;
     bandasRegistradas.Add(nomeDaBanda, new List<int>());
     Console.WriteLine($"A Banda {nomeDaBanda} foi registrada com sucesso!");
+    Thread.Sleep(4000);
+    Console.Clear();
+    ExibirOpcoesDoMenu();
+}
+
+void MostrarBandasRegistradas()
+{
+    Console.Clear();
+    foreach (string banda in bandasRegistradas.Keys)
+    {
+        Console.WriteLine($"Banda: {banda}");
+    }
+
     Thread.Sleep(4000);
     Console.Clear();
     ExibirOpcoesDoMenu();
